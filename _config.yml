@@ -1,3 +1,16 @@
+# --- Build settings
+
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-autoprefixer
+
+# --- Plugin Configurations
+
+autoprefixer:
+  browsers:
+    - last 4 versions
+    - Safari > 2
 
 # --- GitHub Pages
 
