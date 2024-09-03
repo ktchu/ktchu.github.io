@@ -1,0 +1,19 @@
+{% assign page-section = page.url | split: "/" | slice: 1 %}
+<nav class="navbar navbar-expand-sm navbar-light bg-light py-1 px-2 px-sm-4">
+  <a class="navbar-brand" href="/"><img src="{{ site.images_path }}/logo.webp" height="60px" /></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+    {% for item in include.navbar %}
+      {% assign item-section = item.url | split: "/" | slice: 1 %}
+      <li class="nav-item">
+        <a href="{{ item.url }}" class="nav-link {% if item-section == page-section %}active{% endif %}{% if item.disabled %}disabled{% endif %}" {% if item-section == page-section %}aria-current="page"{% endif %}{% if item.disabled %}aria-disabled="true"{% endif %}>
+        {{ item.name }}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</nav>

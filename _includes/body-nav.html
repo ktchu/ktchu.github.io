@@ -1,0 +1,19 @@
+<ul class="nav nav-pills body-nav m-0 p-0">
+{% if page.body-nav %}
+  {% for item in page.body-nav %}
+  <li class="nav-item m-0 p-0">
+    <a href="{{ item.url }}" class="nav-link my-0 py-0 px-2 {% if item.url == page.url %}active{% endif %}{% if item.disabled %}disabled{% endif %}" {% if item.url == page.url %}aria-current="page"{% endif %}{% if item.disabled %}aria-disabled="true"{% endif %}>
+    {{ item.name }}
+    </a>
+  </li>
+  {% endfor %}
+{% elsif layout.body-nav %}
+  {% for item in layout.body-nav %}
+  <li class="nav-item m-0 p-0">
+    <a href="{{ item.url }}" class="nav-link my-0 py-0 px-2 {% if item.url == page.url %}active{% endif %}{% if item.disabled %}disabled{% endif %}" {% if item.url == page.url %}aria-current="page"{% endif %}{% if item.disabled %}aria-disabled="true"{% endif %}>
+    {{ item.name }}
+    </a>
+  </li>
+  {% endfor %}
+{% endif %}
+</ul>

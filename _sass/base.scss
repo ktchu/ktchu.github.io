@@ -1,0 +1,175 @@
+/* body */
+
+body {
+  width: auto;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #039;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1.10em;
+}
+
+h4, h5, h6 {
+  font-size: 1.0em;
+}
+
+p {
+  padding-left: 2px;
+}
+
+/* header */
+
+#header {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+/* navbar */
+
+.navbar {
+  margin: 0;
+  padding: 5px 50px 0 50px;
+}
+
+.navbar .nav-link {
+  color: dimgray;
+  margin: 0 5px;
+  padding: 3px 10px;
+}
+
+.navbar .nav-link.active {
+  color: white;
+  background-color: dimgray;
+  border-radius: 5px;
+}
+
+.navbar .nav-link.disabled {
+  color: lightgray;
+}
+
+.navbar {
+  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-toggler-icon-bg.svg");
+}
+
+.navbar-dark,
+.navbar[data-bs-theme=dark] {
+  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-dark-toggler-icon-bg.svg");
+}
+
+[data-bs-theme=dark] .navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-dark-toggler-icon-bg.svg");
+}
+
+/* main content */
+
+#content {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* footer */
+
+footer {
+  background-color: #039;
+}
+
+footer > div {
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.9em;
+  font-weight: normal;
+  padding: 10px 20px;
+}
+
+/* body navigation */
+
+.body-nav .nav-link {
+  color: dimgray;
+  font-size: 0.9em;
+}
+
+.body-nav .nav-link.active {
+  color: black;
+  background-color: lightgray;
+}
+
+.body-nav .nav-link.disabled {
+  color: lightgray;
+}
+
+/* section */
+
+section {
+  margin: 0;
+  padding: 0;
+}
+
+/* profile */
+
+.profile {
+  border-style: solid;
+  border-color: dimgray;
+  border-width: thin;
+  border-radius: 5px;
+  margin: 0;
+  padding: 20px;
+}
+
+.profile p,
+.profile h3,
+.profile h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.profile h3 {
+  color: black;
+}
+
+.profile h4 {
+  color: #039;
+  font-weight: normal;
+}
+
+.profile img {
+  width: 100%;
+}
+
+/* home page */
+
+.title {
+  color: #039;
+  font-family: helvetica;
+  font-size: 2.8em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #333;
+  font-family: helvetica;
+  font-size: 1.2em;
+  font-weight:bold;
+}
