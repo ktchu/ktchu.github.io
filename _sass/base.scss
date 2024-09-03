@@ -69,19 +69,6 @@ p {
   color: lightgray;
 }
 
-.navbar {
-  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-toggler-icon-bg.svg");
-}
-
-.navbar-dark,
-.navbar[data-bs-theme=dark] {
-  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-dark-toggler-icon-bg.svg");
-}
-
-[data-bs-theme=dark] .navbar-toggler-icon {
-  --bs-navbar-toggler-icon-bg: url("/assets/images/bootstrap/navbar-dark-toggler-icon-bg.svg");
-}
-
 /* main content */
 
 #content {
