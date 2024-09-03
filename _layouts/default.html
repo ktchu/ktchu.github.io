@@ -1,0 +1,19 @@
+---
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% if page.title-tag %}{{ page.title-tag }}{% elsif page.title %}{{ page.title }}{% endif %}</title>
+    <link rel="stylesheet" href="{{ site.assets_path }}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ site.assets_path }}/css/styles.css">
+    <script src="{{ site.assets_path }}/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    {% include header.html navbar=layout.navbar %}
+    <div id="content" class="container mx-auto my-0">
+      {{ content }}
+    </div>
+    {% include footer.html %}
+  </body>
+</html>
