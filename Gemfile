@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins
 
 # Jekyll theme
-gem "minima", "~> 2.5"
+#gem "minima", "~> 2.5"
 
 # If you have any plugins, put them here!
 #group :jekyll_plugins do
