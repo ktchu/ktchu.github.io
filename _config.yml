@@ -1,3 +1,26 @@
+# ==========================
+# Basic Jekyll Configuration
+# ==========================
+
+# --- Site settings
+
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+email: kevin@velexi.com
+organization: Velexi Corporation
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+assets_path: "/assets" # absolute path to directory containing site assets
+images_path: "/assets/images" # absolute path to directory containing site images
+
 # --- Build settings
 
 theme: minima
@@ -11,19 +34,6 @@ autoprefixer:
   browsers:
     - last 4 versions
     - Safari > 2
-
-# --- GitHub Pages
-
-lsi: false
-safe: true
-source: [your repo's top level directory]
-incremental: false
-highlighter: rouge
-gist:
-  noscript: false
-kramdown:
-  math_engine: mathjax
-  syntax_highlighter: rouge
 
 # --- Processing Exclusions
 
@@ -51,3 +61,18 @@ exclude:
 - COPYRIGHT
 - VERSION
 - _bin
+
+# ==========================
+# GitHub Pages Configuration
+# ==========================
+
+lsi: false
+safe: true
+source: "."
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
