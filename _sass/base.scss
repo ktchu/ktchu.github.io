@@ -44,6 +44,7 @@ p {
   margin: 0;
   padding: 0;
   background-color: white;
+  border-bottom: 1px solid lightgray;
 }
 
 /* navbar */
@@ -80,7 +81,7 @@ a.navbar-brand {
 
 #content {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 
 /* footer */
