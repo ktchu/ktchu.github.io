@@ -64,8 +64,16 @@ p {
   color: lightgray;
 }
 
+a.navbar-brand {
+  color: dimgray;
+}
+
 .navbar-nav a {
   font-size: 0.9em;
+}
+
+.navbar-nav a:hover {
+  color: black;
 }
 
 /* main content */
