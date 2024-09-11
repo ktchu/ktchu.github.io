@@ -4,6 +4,9 @@ navbar:
   url: /
 - name: Research
   url: /research/
+- name: Teaching
+  url: /teaching/
+  disabled: true
 ---
 <!doctype html>
 <html lang="en">
@@ -22,6 +25,8 @@ navbar:
     <div id="content" class="container mx-auto my-0">
       {{ content }}
     </div>
-    {% include footer.html %}
+    <div class="container mx-auto my-0 p-0">
+      {% include footer.html %}
+    </div>
   </body>
 </html>
