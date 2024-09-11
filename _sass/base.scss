@@ -48,11 +48,6 @@ p {
 
 /* navbar */
 
-.navbar {
-  margin: 0;
-  padding: 5px 50px 0 50px;
-}
-
 .navbar .nav-link {
   color: dimgray;
   margin: 0 5px;
@@ -69,6 +64,10 @@ p {
   color: lightgray;
 }
 
+.navbar-nav a {
+  font-size: 0.9em;
+}
+
 /* main content */
 
 #content {
@@ -79,15 +78,10 @@ p {
 /* footer */
 
 footer {
-  background-color: #039;
-}
-
-footer > div {
-  color: white;
+  color: black;
   font-family: sans-serif;
-  font-size: 0.9em;
+  font-size: small;
   font-weight: normal;
-  padding: 10px 20px;
 }
 
 /* body navigation */
