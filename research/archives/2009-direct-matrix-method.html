@@ -1,0 +1,50 @@
+---
+layout: research
+title: Direct Matrix Method
+title-tab: Research | Direct Matrix Method
+---
+<p>
+Computation of the Jacobian for discretized nonlinear integro-differential
+equations is an important step for many numerical algorithms.  The direct
+matrix (or operator) method for analytically computing the Jacobian are
+relatively well-known in the scientific computing and numerical analysis
+communities and are typically organized as a collection of "rules of thumb"
+gained through experience.  What is not often realized, however, is that
+these heuristic rules can be formally organized into a collection of simple
+rules reminiscent of the rules for calculating derivatives in single-variable
+calculus.
+</p>
+
+<p>
+In this work, I have used a MATLAB-based notation to formalize several
+differentiation rules for computing analytical Jacobians for discretized
+nonlinear integro-differential equations.  Using these rules can dramatically
+reduce
+</p>
+<ul>
+  <li>the effort required to calculate analytical Jacobians and
+  </li>
+  <li>improve the computational performance of numerical algorithms that
+  require the Jacobian.
+  </li>
+</ul>
+
+<h4>Examples</h4>
+<ul class="spclist">
+  <li>Electrochemical thin-films
+  (<a href="http://ktchu.serendipityresearch.org/download/research/CSE/src/direct_matrix_method/solveSteadyPNP.m">source code</a>)
+  </li>
+
+  <li>
+  Double layer charging of metal colloid spheres at high applied electric
+  fields
+  (<a href="http://ktchu.serendipityresearch.org/download/research/CSE/src/direct_matrix_method/MetalColloidDoubleLayerCharging.tar.gz">source code</a>)
+  </li>
+
+  <li>Nanostructure shape
+  (<a href="http://ktchu.serendipityresearch.org/download/research/CSE/src/direct_matrix_method/nanostructureShape.m">source code</a>)
+  </li>
+</ul>
+
+<h4>References</h4>
+{% bibliography --query @*[key=2009-Chu-JCP] %}

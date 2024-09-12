@@ -1,0 +1,194 @@
+---
+layout: research
+title: Grapevine - An Internet Distributed Computing Framework
+title-tab: Research | Grapevine
+---
+<p>
+<strong>Developers:</strong>
+Kunal Agrawal, Huey Ting Ang, Guoliang Li, Kevin Chu
+</p>
+
+<ul>
+  <li><a href="reports/index.html">Project Reports</a></li>
+</ul>
+
+<h2>Overview</h2>
+<p>
+Tapping into the unused resources of volunteer computers connected to the
+internet is not a new idea.  Indeed, there are currently many active efforts
+in this area (e.g. the SETI project, distributed.net, Parabon).  While many
+early distributed computing efforts targeted specific applications, more
+recent work has focused on the development of general distributed computing
+infrastructure.  Leaders in this field include Parabon Computation, United
+Devices, and the Globus Project.  Each of these efforts has developed a
+software infrastructure that supports distributed computing.
+</p>
+
+<p>
+For our class project, we propose to explore some fundamental and practical
+issues in distributed computing on volunteered nodes connected to the
+internet by designing and implementing a simple distributed computing
+infrastructure.  To gain an appreciation for the types of computing
+applications that are suited for a distributed computing environment, we
+also intend to develop one application to be deployed on the infrastructure.
+</p>
+
+<p>
+Thus the project will consist of essentially two parts.
+</p>
+<ul>
+  <li> Development of the distributed computing Infrastructure.</li>
+  <li> Development of an application for this environment.</li>
+</ul>
+
+<h2>Part 1 : Design of the Infrastructure</h2>
+To facilitate the design process, we plan to study the designs of the
+Parabon Computation, United Devices, and Globus Project infrastructures.
+
+<p>
+A few key features of this project that make it interesting are:
+</p>
+
+<ul>
+  <li> In contrast to a traditional parallel computer, the application
+  cannot be designed to maximize utilization of the computing resources
+  because the machines that the application is running are volunteered
+  (as opposed to dedicated).  Exploration of what types of applications
+  fit this model of computing is important given the trend towards
+  distributed computing as a viable alternative to dedicated
+  massively-parallel computing.
+  </li>
+
+  <li> Issues of communication vs. computation, node reliability, load
+  balancing, etc.  involved in traditional parallel computing will be
+  amplified in a distributed computing environment deployed over the
+  internet.  A good understanding of the implication of these issues in the
+  context of "internet supercomputing" is necessary if supercomputing is to
+  progress beyond economic bounds of dedicated machinery.
+  </li>
+
+  <li> It's free!  If we design it right (security, etc.), it could
+  potentially be a free distributed computing infrastructure that
+  could be used for personal use.  For example, this would allow
+  poor graduate students (who can't afford the costs of using commercial
+  systems) to gain experience in distributed, internet supercomputing.
+  </li>
+</ul>
+
+<h3>Preliminary Infrastructure Design Ideas</h3>
+There will be two primary types of nodes in the infrastructure:
+
+<ul>
+  <li> Volunteer/Worker node - a daemon program running on these nodes
+  awaits "program fragments" to run from the node.
+  </li>
+
+  <li> Dispatch node - a daemon program running on these nodes receives
+  jobs that are submitted by users.  Based on some load balancing algorithm,
+  the dispatch node sends the "program fragments" out to the volunteer
+  nodes to be run.
+  </li>
+</ul>
+
+<p>
+A simple model for the "program fragment" might be that they are
+serialized objects that implement some Java interface that we define.
+As a possibility, we could require that users implement a class that
+extends the Thread class and implements the Serializable interface plus
+a few of our own methods.  Then when the job is submitted, the dispatcher
+could serialize the user class, send it over the network to the
+worker daemon which would unserialize the object and run the thread.
+</p>
+
+<p>
+Some immediate issues to work out include:
+</p>
+<ul>
+  <li> Definition of the user class interfaces.</li>
+  <li> Work out the details of how the dispatcher and volunteer nodes operate. </li>
+</ul>
+
+<h2>Part II: Distribted Application</h2>
+
+<h3>Machine Learning Classifiers</h3>
+Machine learning techniques have a wide range of practical applications in
+fields like data mining, information retrival, image processing ,bioinformatics,
+stock prediction etc. A machine learning application typically involves finding
+inherent patterns in massive data that may not be interpretable by human.  We
+are referring to the set of supervised learning algorithms here, which involves
+a training and testing phase. In the training phase, we are concerned with the
+selection of tranining examples and the model used to represent the data.
+
+<p>
+Some of the widely used models are listed below:
+</p>
+
+<ul>
+  <li> Decision Tree, C5</li>
+  <li> Neural Networks</li>
+  <li> Bayesian Learning</li>
+  <li> Support Vector Machine</li>
+  <li> Maximum Entropy</li>
+</ul>
+
+<strong>Bagging and Boosting:</strong>
+Bagging and Boosting are two common example-based techniques used to build
+classifier from smaller subsets of the dataset. In bagging, training examples
+are randomly selected with replacement to form smaller subsets. These subsets
+are used to train separate classifiers. A voting mechanism is then used to
+gather results from  the mutiplier classifers. Boosting involves iteratively
+selecting the "difficult" examples as training examples.  These techniques have
+demonstrated great success in improving the accuracy of the classifiers at the
+expense of high computation cost as multiple classifiers need to be built.
+As such, it fits nicely into our paradigm of distributed parallel computing
+where the multiple classifiers can be trained on different machines.
+
+<h3>Task Definition: Mechanism for Bagging and Boosting</h3>
+
+We would like to build a general framework to support Bagging and Boosting
+in a parallel distributed computing environment. Bagging is inherently
+parallelizable and  boosting can be adapted to work in a parallel way.
+Our mechanism should support any models that adhere to our specified format
+of input/output  for training file.
+
+<h3>Problems</h3>
+<ul>
+  <li> In a distributed environment across network, there is a need to cater
+  for packets "lost" in the dispatching process. That is, we should also sent
+  out more jobs than is reqiured and the final results are computed from
+  whatever results received within a specified timeframe.
+  </li>
+
+  <li> Depending on the size of each subset, we may need to send voluminous
+  amounts of data  (depends on application)
+  </li>
+
+</ul>
+
+<h3>Demonstration of Result - Text Categorization</h3>
+Imagine building a text categorization system (as in Yahoo, but involves not
+only websites but all documents residing on the machines in the environment).
+On each machine there is an individual classifier that will train on the
+documents residing on that machine. In boosting mode, it can send the documents
+that it classified incorrectly to other machine for training too. The
+classifier on each machine needs to be retrained after the documents increase
+by a certain number.
+
+<p>
+A comittee based classifier will be built using a voting mechanism based on
+these classifiers.Different machine learning algorithms involve different
+costs for training and testing.We will parallelize either the training phase,
+the testing phase or both phases, subject to time constraints, feasibility
+and usefulness.
+</p>
+
+<h3>Basic assumptions</h3>
+<ul>
+  <li> The trained model is small, and can be easily duplicated on different
+  machines.
+  </li>
+
+  <li> Bulk of the training data resides on each individual machine, with
+  some training examples from other machines in the boosting mode.
+  </li>
+</ul>
