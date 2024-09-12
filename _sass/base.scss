@@ -35,7 +35,11 @@ h4, h5, h6 {
 }
 
 p {
-  padding-left: 2px;
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    margin-bottom: 0.5rem;
 }
 
 /* header */
@@ -122,37 +126,6 @@ footer {
 section {
   margin: 0;
   padding: 0;
-}
-
-/* profile */
-
-.profile {
-  border-style: solid;
-  border-color: dimgray;
-  border-width: thin;
-  border-radius: 5px;
-  margin: 0;
-  padding: 20px;
-}
-
-.profile p,
-.profile h3,
-.profile h4 {
-  margin: 0;
-  padding: 0;
-}
-
-.profile h3 {
-  color: black;
-}
-
-.profile h4 {
-  color: #039;
-  font-weight: normal;
-}
-
-.profile img {
-  width: 100%;
 }
 
 /* home page */
