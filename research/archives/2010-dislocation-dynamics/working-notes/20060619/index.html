@@ -1,0 +1,290 @@
+---
+layout: research
+title: Dislocation Dynamics - Working Notes (2006/06/19)
+title-tab: Research | Dislocation Dynamics
+---
+<h2>LSMDD:  Development Notes</h2>
+<p>
+This document records the current status and issues in the development
+of the parallel dislocation dynamics simulation.
+</p>
+
+<h2><em>2006 June 19</em></h2>
+I have been testing the code by trying to reproduce Xiang Yang's results from 
+the 2003 paper.  Most of the results are in good agreement when run at the 
+same resolution as in the paper (64x64x64).  Unfortunately, at higher 
+resolutions, stability issues seem to arise for some of the examples.
+
+<h3>Main Issues</h3>
+<ul>
+  <li>Maximum stable dt as a function of dx.
+  </li>
+
+  <li>The maximum angle allowed between the Burgers vector and the tangent 
+  vector to the dislocation line for a dislocation line segment to be considered
+  to have pure screw character.
+  </li>
+</ul>
+
+<h3>Dislocation loops</h3>
+At a resolution of 64x64x64, agreement is with Xiang Yang's results are good
+for the prismatic, glide and general dislocation loop examples.
+
+<p>
+<img src="figs/general_dislocation_loop.png" width="400" alt=""/>
+<img src="figs/prismatic_loop.png" width="400" alt=""/>
+<img src="figs/glide_loop_64_sigma_7_5.png" width="400" alt=""/>
+</p>
+
+<p>At a resolution of 100x100x100, the glide loop example required a larger
+applied stress to overcome the tendency for the loop to shrink.  This makes
+sense in light of the fact that the core radius is smaller at higher 
+resolutions.
+</p>
+
+<p>
+<img src="figs/glide_loop_100_sigma_7_5.png" width="400" alt=""/>
+<img src="figs/glide_loop_100_sigma_10_0.png" width="400" alt=""/>
+</p>
+
+
+<h3>Dislocations bypassing particles</h3>
+At a resolution of 64x64x64, I get reasonable agreement with the serial code
+at short times, but at longer times, the results are not in complete 
+agreement.  The main difference seems to be that portions of the dislocation
+line that are pure screw do not cross-slip as much in the parallel code
+as in the serial code.  I am currently discussing with Xiang Yang what
+the appropriate criteria should be for considering a dislocation line
+segment to have pure screw character.
+
+
+<h4>Cross-slip (64x64x64)</h4>
+As you can see in the following figures, the dislocation line does not
+cross slip on the sides of the particle as much as they did in Xiang Yang's
+simulations.
+
+<p>The maximum angle allowed between the Burgers vector and the tangent 
+vector to the dislocation line for a dislocation line segment to be
+considered to have pure screw character is approximately 3 times the grid 
+spacing.
+</p>
+
+<table border="0">
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_64_00000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_64_00000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_64_02000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_64_02000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_64_04000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_64_04000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_64_06000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_64_06000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_64_08000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_64_08000.png" width="400" alt=""/>
+</td>
+</tr>
+</table>
+
+
+<h4>Cross-slip (100x100x100)</h4>
+At higher grid resolutions, the dislocation line is more unstable than
+for the 64x64x64 grid and there is less cross-slip for the portions
+of the dislocation line on the two sides of the obstacle.
+
+<p>
+The maximum angle allowed between the Burgers vector and the tangent 
+vector to the dislocation line for a dislocation line segment to be
+considered to have pure screw character is approximately 3 times the grid 
+spacing.
+</p>
+
+<table border="0">
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_100_00000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_100_00000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_100_02000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_100_02000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_100_04000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_100_04000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_100_06000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_100_06000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_side_100_08000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_top_100_08000.png" width="400" alt=""/>
+</td>
+</tr>
+</table>
+
+
+<h4>Cross-slip plus Orowan (64x64x64)</h4>
+As you can see in the following figures, the dislocation line does not
+cross slip up backside of the particle as much as they did in Xiang Yang's
+simulations.
+
+<p>
+The maximum angle allowed between the Burgers vector and the tangent 
+vector to the dislocation line for a dislocation line segment to be
+considered to have pure screw character is approximately 3 times the grid 
+spacing.
+</p>
+
+<table border="0">
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_00000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_00000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_02000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_02000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_04000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_04000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_06000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_06000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_08000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_08000.png" width="400" alt=""/>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_side_64_09000.png" width="400" alt=""/>
+</td>
+<td>
+<img src="figs/obstacle_cross_slip_orowan_top_64_09000.png" width="400" alt=""/>
+</td>
+</tr>
+</table>
+
+
+<h4>Cross-slip plus Orowan (100x100x100)</h4>
+At higher grid resolutions, we require smaller time step size to get a
+stable dislocation line.  But even with the smaller dt, the dislocation 
+line does not cross-slip as high as in the 64x64x64 resolution case.
+One other potential issue is the lack of symmetry in the result when using
+a grid of size 100x100x100.
+
+<p>
+The maximum angle allowed between the Burgers vector and the tangent 
+vector to the dislocation line for a dislocation line segment to be
+considered to have pure screw character is approximately 3 times the grid 
+spacing.
+</p>
+
+<p>
+<img src="figs/obstacle_cross_slip_orowan_64_dt_0001_t_0_2.png" width="400" alt=""/>
+<img src="figs/obstacle_cross_slip_orowan_100_dt_000025_t_0_2.png" width="400" alt=""/>
+<img src="figs/obstacle_cross_slip_orowan_100_dt_0001_t_0_2.png" width="400" alt=""/>
+<img src="figs/obstacle_cross_slip_orowan_100_dt_00005_t_0_2.png" width="400" alt=""/>
+</p>
+
+
+<h3>Dislocation Reactions</h3>
+I tested the dislocation reaction example where two sets of initially
+straight dislocation lines react to form a hexagonal-like structure.
+At a resolution of 64x64x64, the reaction does not complete and a large
+gap remains between the edges of the crossing dislocation lines.
+At high resolutions, some sort of instability occurs near the region
+where the dislocations cross.
+
+<p>
+The maximum angle allowed between the Burgers vector and the tangent 
+vector to the dislocation line for a dislocation line segment to be
+considered to have pure screw character is approximately 3 times the grid 
+spacing.
+</p>
+
+<p>
+<img src="figs/rxn_weno5tvdrk3_64_dt_0001.png" width="400" alt=""/>
+<img src="figs/rxn_weno5tvdrk3_100_dt_0001.png" width="400" alt=""/>
+<img src="figs/rxn_weno5tvdrk3_100_dt_00005.png" width="400" alt=""/>
+</p>

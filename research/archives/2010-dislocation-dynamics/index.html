@@ -1,0 +1,56 @@
+---
+layout: research
+title: Dislocation Dynamics and Grain Boundary Evolution
+title-tab: Research | Dislocation Dynamics
+---
+<p>
+<strong>Collaborators:</strong> 
+David J.  Srolovitz, 
+Mikko Haataja,
+S.S. Jerry Quek,
+Zi Chen,
+Adele Lim
+</p>
+
+<div class="fig-caption" style="width:300px">
+  <a href="mat_sci_six_dislocation_lines.png"><img src="mat_sci_six_dislocation_lines.png" width="300px" alt="Six interacting dislocation lines" /></a>
+
+  <br/>
+  Six interacting dislocation lines.  
+  (Image courtesy of Zhaoxuan Wu) 
+
+</div>
+
+<p>
+Understanding the role of dislocations and grain boundary evolution in the
+plastic deformation of materials continues to present an important and 
+interesting challenge for material scientists.  We studied both of these 
+microstructural entities using mesoscopic computational models based on 
+the level set method. 
+</p>
+
+<p>
+In our model, dislocations are represented by the intersection of the zero
+level sets of two level set functions.  An important consequence of this
+<em>implicit</em> representation of the dislocation line is that topological
+changes that occur when dislocation lines interact with obstacles and
+with each other take place automatically without requiring complicated
+``surgical procedures.''  
+</p>
+
+<p>
+To address the computational complexity of modeling dislocation
+networks and grain boundaries using the level set method, we have 
+implemented the <a href="http://ktchu.serendipityresearch.org/software/lsmdd/index.html">Level Set Method 
+Dislocation Dyanmics (LSMDD)</a> library.  This software library is
+designed to support high-performance, parallel computation and to be 
+modular enough to allow for exploration of novel numerical models and 
+algorithms for simulating dislocation dynamics and interactions. 
+</p>
+
+<br/>
+<h4>References</h4>
+{% bibliography --query @*[key ^= 2010-Chen_Chu || key ^= 2007-Chu_Lim ] %}
+<li>
+<a href="working-notes">Working notes</a>
+</li>
