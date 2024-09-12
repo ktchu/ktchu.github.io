@@ -43,12 +43,20 @@ p {
 #header {
   margin: 0;
   padding: 0;
-  background-color: white;
   border-bottom: 1px solid lightgray;
+}
+
+#header > .container {
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* navbar */
 
+.navbar {
+  margin: 0 auto;
+  padding: 10px 20px;
+}
 .navbar .nav-link {
   color: dimgray;
   margin: 0 5px;
@@ -93,19 +101,19 @@ footer {
   font-weight: normal;
 }
 
-/* body navigation */
+/* content navigation */
 
-.body-nav .nav-link {
+#content .nav .nav-link {
   color: dimgray;
   font-size: 0.9em;
 }
 
-.body-nav .nav-link.active {
+#content .nav .nav-link.active {
   color: black;
   background-color: lightgray;
 }
 
-.body-nav .nav-link.disabled {
+#content .nav .nav-link.disabled {
   color: lightgray;
 }
 
