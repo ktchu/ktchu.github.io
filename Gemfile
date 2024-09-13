@@ -30,4 +30,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # --- Additional Gems
 
-gem "kramdown", "~> 2.4"
+#gem "kramdown", "~> 2.4"
