@@ -58,6 +58,7 @@ autoprefixer:
 #   - vendor/ruby/
 
 exclude:
+- README.md
 - RELEASE-NOTES.md
 - COPYRIGHT
 - VERSION
