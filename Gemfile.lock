@@ -201,6 +201,7 @@ DEPENDENCIES
   jekyll
   jekyll-autoprefixer (~> 1.0)
   jekyll-scholar
+  kramdown (~> 2.4)
   minima (~> 2.5)
   tzinfo (>= 1, < 3)
   tzinfo-data
