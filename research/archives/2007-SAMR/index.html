@@ -4,8 +4,8 @@ title: Structured Adaptive Mesh Refinement (SAMR)
 title-tab: Research | SAMR
 ---
 <div class="fig-caption" style="width:300px">
-  
-  <a href="SAMR-phase_field.webp"><img src="SAMR-phase_field.webp" 
+
+  <a href="figures/SAMR-phase_field.webp"><img src="figures/SAMR-phase_field.webp"
     width="300px" alt="SAMR phase field simulation"/></a>
 
   <br/>
@@ -15,34 +15,34 @@ title-tab: Research | SAMR
 </div>
 
 <p>
-Structured adaptive mesh refinement (SAMR) is a technique for improving the 
+Structured adaptive mesh refinement (SAMR) is a technique for improving the
 computational performance of simulations on structured grids by focusing
 computational resources where it is needed.  More precisely, SAMR achieves
 high accuracy while controlling computational cost by restricting the use
-of high resolution computational grids to regions where physical or 
+of high resolution computational grids to regions where physical or
 numerical considerations indicate that it is required.
 </p>
 
 <p>
-To rapidly develop SAMR-based simulations, I leverage the 
-<a href="https://computation.llnl.gov/casc/SAMRAI/">Structured Adaptive Mesh 
-  Refinement Application Infrastructure (SAMRAI)</a> developed in the 
-<a href="https://computation.llnl.gov/casc/">Center for Applied Scientific 
-  Computing</a> at <a href="https://www.llnl.gov/">Lawrence Livermore 
-  National Laboratory</a>.  SAMRAI is a large, C++ library that is designed 
-to support large-scale, parallel, structured adaptive mesh refinement (SAMR) 
-simulations without requiring application developers to implement low-level 
-parallel and/or SAMR algorithms. For example, SAMRAI shields application 
-developers from the low-level programming details involved with management of 
-bookkeeping for SAMR data structures and parallel communication.  In addition, 
+To rapidly develop SAMR-based simulations, I leverage the
+<a href="https://computation.llnl.gov/casc/SAMRAI/">Structured Adaptive Mesh
+  Refinement Application Infrastructure (SAMRAI)</a> developed in the
+<a href="https://computation.llnl.gov/casc/">Center for Applied Scientific
+  Computing</a> at <a href="https://www.llnl.gov/">Lawrence Livermore
+  National Laboratory</a>.  SAMRAI is a large, C++ library that is designed
+to support large-scale, parallel, structured adaptive mesh refinement (SAMR)
+simulations without requiring application developers to implement low-level
+parallel and/or SAMR algorithms. For example, SAMRAI shields application
+developers from the low-level programming details involved with management of
+bookkeeping for SAMR data structures and parallel communication.  In addition,
 by adopting a patch-based (as opposed to a cell-based) refinement mechanism,
-SAMRAI makes it relatively easy to migrate from serial codes written to solve 
-problems on simple, uniform grids to parallel and/or SAMR numerical 
-simulations.  
+SAMRAI makes it relatively easy to migrate from serial codes written to solve
+problems on simple, uniform grids to parallel and/or SAMR numerical
+simulations.
 </p>
 
 <p>
-I am currently involved in various projects where SAMR is used to improve 
+I am currently involved in various projects where SAMR is used to improve
 the computational performance of material science and biophysics simulations.
 </p>
 
