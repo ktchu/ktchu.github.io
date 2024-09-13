@@ -1,0 +1,18 @@
+---
+layout: research
+title: Publications
+title-tab: Publications
+permalink: /research/publications/
+---
+
+<h2>Journal Publications</h2>
+{% bibliography --query @article %}
+
+<h2>Conference Papers</h2>
+{% bibliography --query @conference %}
+
+<h2>Technical Reports</h2>
+{% bibliography --query @techreport %}
+
+<h2>Ph.D. Thesis</h2>
+{% bibliography --query @phdthesis %}

@@ -34,25 +34,25 @@ h4, h5, h6 {
   font-size: 1.0em;
 }
 
-p {
-  padding-left: 2px;
-}
-
 /* header */
 
-#header {
+#header-bar {
   margin: 0;
   padding: 0;
-  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+#header {
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* navbar */
 
 .navbar {
-  margin: 0;
-  padding: 5px 50px 0 50px;
+  margin: 0 auto;
+  padding: 10px 20px;
 }
-
 .navbar .nav-link {
   color: dimgray;
   margin: 0 5px;
@@ -69,40 +69,47 @@ p {
   color: lightgray;
 }
 
+a.navbar-brand {
+  color: dimgray;
+}
+
+.navbar-nav a {
+  font-size: 0.9em;
+}
+
+.navbar-nav a:hover {
+  color: black;
+}
+
 /* main content */
 
 #content {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 10px 20px;
 }
 
 /* footer */
 
 footer {
-  background-color: #039;
-}
-
-footer > div {
-  color: white;
+  color: black;
   font-family: sans-serif;
-  font-size: 0.9em;
+  font-size: small;
   font-weight: normal;
-  padding: 10px 20px;
 }
 
-/* body navigation */
+/* content navigation */
 
-.body-nav .nav-link {
+#content .nav .nav-link {
   color: dimgray;
   font-size: 0.9em;
 }
 
-.body-nav .nav-link.active {
+#content .nav .nav-link.active {
   color: black;
   background-color: lightgray;
 }
 
-.body-nav .nav-link.disabled {
+#content .nav .nav-link.disabled {
   color: lightgray;
 }
 
@@ -113,50 +120,46 @@ section {
   padding: 0;
 }
 
-/* profile */
-
-.profile {
-  border-style: solid;
-  border-color: dimgray;
-  border-width: thin;
-  border-radius: 5px;
-  margin: 0;
-  padding: 20px;
-}
-
-.profile p,
-.profile h3,
-.profile h4 {
-  margin: 0;
-  padding: 0;
-}
-
-.profile h3 {
-  color: black;
-}
-
-.profile h4 {
-  color: #039;
-  font-weight: normal;
-}
-
-.profile img {
-  width: 100%;
-}
-
 /* home page */
 
 .title {
   color: #039;
   font-family: helvetica;
-  font-size: 2.8em;
-  font-style: italic;
-  font-weight: bold;
+  font-size: 1.8em;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .subtitle {
   color: #333;
   font-family: helvetica;
   font-size: 1.2em;
-  font-weight:bold;
+  font-style: normal;
+  font-weight: 300;
+}
+
+/* figures */
+
+.figure
+{
+  margin: 10px;
+  background: #fff;
+  float: right;
+  margin: 0;
+  padding: 0 0 40px 20px;
+  color: #888;
+  font: normal 10px verdana, sans-serif;
+  text-align: center;
+}
+
+.figure-caption
+{
+  margin: 10px;
+  background: #fff;
+  float: right;
+  margin: 0;
+  padding: 0 0 40px 20px;
+  color: #888;
+  font: normal 10px verdana, sans-serif;
+  text-align: left;
 }

@@ -2,7 +2,9 @@ source "https://rubygems.org"
 
 # --- Core Jekyll Gems
 
-gem "github-pages", group: :jekyll_plugins
+#gem "github-pages", group: :jekyll_plugins
+gem "jekyll"
+gem "jekyll-scholar", group: :jekyll_plugins
 
 # Jekyll theme
 gem "minima", "~> 2.5"

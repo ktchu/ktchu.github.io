@@ -1,0 +1,153 @@
+---
+layout: research
+title: Dislocation Dynamics - Working Notes (2007/08/30)
+title-tab: Research | Dislocation Dynamics
+---
+<h2>
+  Comparison of Nonsingular Dislocation Theory with Results of Numerically Smeared Cores
+</h2>
+
+<h3> Abstract </h3>
+Analytically smearing of the dislocation core to remove the singularity 
+inherent in theory of infinitely thin dislocations results in the errors 
+of the same order of magnitude in those that arise when the dislocation 
+core is smeared numerically.
+
+
+<h3> Methodology </h3>
+<ul>
+
+  <li> For all of the results, the dislocation configuration is taken to be
+  an array of edge dislocations with Burgers vector in the (1,0,0)
+  direction and line direction in the (0,0,1) direction.  The array
+  ordered such that the normal to the plane of the dislocation array is
+  in the (1,0,0) direction.  The dislocation array is periodically
+  repeated in the x-direction.  The simulation cells is [-50,50]x[-40,40],
+  which implies that the inter-dislocation spacing is 80 and the
+  distance between periodic images of the dislocation array is 100.
+  </li>
+
+  <li>The stress fields for the nonsingular theory of dislocations account
+  for the fact that there are an infinite number of periodic image 
+  dislocations in the y-direction.  The formulae for infinite, periodic
+  dislocation arrays were derived by using the formulas in section 19-5
+  of Hirth/Lothe with expressions for the stress fields from Cai 2006.
+  (<a href="dislocation_arrays_nonsingular.pdf">dislocation_arrays_nonsingular.pdf</a>)
+  </li>
+  
+  <li>The analytical stress fields include one periodic image of the 
+  dislocation array in the x-direction.
+  </li>
+
+  <li>All calculations are on a uniform grid with dx = dy using the 
+  Fourier transform formulation in Xiang et. al.
+  </li>
+
+  <li>The errors for the stress fields are only computed OUTSIDE of the
+  specified physical core.
+  </li>
+
+  <li>Larger versions of all figures on this page are available
+  by clicking on them.
+  </li>
+
+  <li>Code used to obtain these results are:
+  <a href="code/compute_stress_fields_sharp.m">compute_stress_fields_sharp.m</a>,
+  <a href="code/compute_stress_fields_cai.m">compute_stress_fields_cai.m</a>,
+  <a href="code/compute_stress_fields_numerical.m">compute_stress_fields_numerical.m</a>,
+  <a href="code/dislocation_array_stress_field_cai.m">dislocation_array_stress_field_cai.m</a>,
+  <a href="code/dislocation_array_stress_field_sharp.m">dislocation_array_stress_field_sharp.m</a>,
+  <a href="code/distributed_core_effects.m">distributed_core_effects.m</a>,
+  <a href="code/numerical_vs_analytical_smearing.m">numerical_vs_analytical_smearing.m</a>,
+  <a href="code/sharp_vs_cai.m">sharp_vs_cai.m</a>,
+  <a href="code/results.m">results.m</a>.
+  </li>
+
+</ul>
+
+
+<h3> Dependence of Error on Core Size Parameter</h3>
+Both analytical and numerical smearing of the core yield an error in the
+stress field outside of the physical core region.  These errors have the 
+same order of magnitude.  However, the error in the nonsingular theory is 
+systematically larger than the error in the numerical solution.
+<table>
+<tr>
+<td>
+The analytical and numerical stress fields have comparable errors.
+Here the physical core radius is fixed at 4 and the grid resolution is 
+fixed at 0.25.
+</td>
+<td>
+<a href="figs/err_vs_core_size_parameter.png">
+<img src="figs/err_vs_core_size_parameter.png" width="400" alt=""/>
+</a>
+</td>
+</tr>
+</table>
+
+
+<h3> Increasing Error when Physical Core and Core Size Paramter are Equal </h3>
+The choice of taking the physical core size to be the same as the 
+core size parameter leads to an error in the stress fields around the 
+dislocation core that increases with decreasing core size.  This effect
+is present in both the analytical and numerical solutions.
+<table>
+<tr>
+<td>
+Error shows a roughly inverse dependence on the numerical 
+core radius.  Here the grid resolution is fixed at 0.25.
+</td>
+<td>
+<a href="figs/err_vs_core_size.png">
+<img src="figs/err_vs_core_size.png" width="400" alt=""/>
+</a>
+</td>
+</tr>
+</table>
+
+
+<h3> Comparison of Difference Between Nonsingular Theory and Numerical 
+Solution</h3>
+The difference between the nonsingular theory is nontrivial but decreases
+as we shrink both the numerical core radius and the core radius parameter
+in the nonsingular theory.  It appears that using a smaller core radius
+parameter in the nonsingular theory decreases the difference between the
+nonsingular theory and the numerical solutions.
+<table>
+<tr>
+<td>
+Comparison of the difference between the stress fields in the nonsingular
+theory and the numerically computed stress fields.
+Here the physical core radius is fixed at 4. 
+</td>
+<td>
+<a href="figs/numerical_solution_vs_cai_solution.png">
+<img src="figs/numerical_solution_vs_cai_solution.png" width="400" alt=""/>
+</a>
+</td>
+</tr>
+</table>
+
+
+<h3> Summary/Conclusions </h3>
+At distances near the physical core size, any theory of dislocations that 
+distributes the core over a finite region that is on the order of the 
+physical core size leads to significant deviations from the stress fields 
+for infinitely thin dislocation lines.  For the nonsingular theory 
+developed by Cai et. al., the deviations have roughly the same scaling
+and same order of magnitude as the errors in the numerical solution. 
+
+<p>
+Any dislocation dynamics simulations that removes the singularity by
+smearing the dislocation core to a width on the order of the "physical 
+core size" will show the same problems as our level set based simulation.
+</p>
+
+<h3> References </h3>
+<ul>
+  <li>W. Cai, A. Arsenlis, C.R. Weinberger, and V.V. Bulatov.
+  A non-singular continuum theory of dislocations.
+  J. Mech. Phys. Solids, 54: 561-587, 2006.
+  </li>
+</ul>

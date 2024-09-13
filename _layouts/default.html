@@ -1,17 +1,30 @@
 ---
+navbar:
+- name: Home
+  url: /
+- name: Research
+  url: /research/
+- name: Education
+  url: /education/
+  disabled: true
+- name: About
+  url: /about/
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% if page.title-tag %}{{ page.title-tag }}{% elsif page.title %}{{ page.title }}{% endif %}</title>
+    <title>Kevin T. Chu{% if page.url != "/" %} | {% if page.title-tab %}{{ page.title-tab }}{% elsif page.title %}{{ page.title }}{% endif %}{% endif %}</title>
     <link rel="stylesheet" href="{{ site.assets_path }}/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ site.assets_path }}/css/styles.css">
     <script src="{{ site.assets_path }}/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
   </head>
   <body>
     {% include header.html navbar=layout.navbar %}
-    <div id="content" class="container mx-auto my-0">
+    <div id="content" class="container my-0 mx-auto">
       {{ content }}
     </div>
     {% include footer.html %}
