@@ -65,6 +65,11 @@ exclude:
 - _bin
 
 # ============================
+# MathJax configuration
+# ============================
+markdown: kramdown
+
+# ============================
 # Jekyll Scholar Configuration
 # ============================
 scholar:
