@@ -140,7 +140,19 @@ section {
 
 /* figures */
 
-.fig-caption
+.figure
+{
+  margin: 10px;
+  background: #fff;
+  float: right;
+  margin: 0;
+  padding: 0 0 40px 20px;
+  color: #888;
+  font: normal 10px verdana, sans-serif;
+  text-align: center;
+}
+
+.figure-caption
 {
   margin: 10px;
   background: #fff;
