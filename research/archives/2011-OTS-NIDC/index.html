@@ -1,24 +1,43 @@
 ---
 layout: research
 title: Optimal Time Step (OTS) Selection and Non-Iterative Defect Correction (NIDC) for Finite Difference Schemes
-title-tab: Research | OTS-NIDC
+title-tab: Research | OTS + NIDC
 ---
 <p>
-It is possible to boost the order of accuracy of finite difference schemes for time
-dependent PDEs by carefully choosing the time step and applying a non-iterative defect
-correction. The key implication of this result is that it may be possible to transform
-formally low-order accurate finite difference schemes into high-order accurate numerical
-methods with very little modification of both the original numerical algorithm and
-software implementation.
+An amazing (but straightforward) implication of Taylor series analysis of errors of
+finite difference approximations is that the accuracy of common finite difference schemes
+for time-dependent PDEs can be <i>boosted above the formal accuracy</i> by using an optimal
+time step (OTS) and applying a non-iterative defect correction (NIDC)
+{% cite 2011-Chu-AMC %}. A key consequence of this result is that it may be possible to
+transform formally low-order accurate finite difference schemes into high-order accurate
+numerical methods with very little modification of both the original numerical algorithm
+and software implementation.
 </p>
 
 <p>
-MATLAB code for all examples is available <a href="#code">below</a>.
+MATLAB code for all of the examples is available <a href="#code">below</a>.
 </p>
 
-<h2>Examples</h2>
+<hr/>
 
-<h3>1D Viscous Burgers Equation</h3>
+<h2>Examples of OTS + NIDC</h2>
+
+<p>
+For a variety of time-dependent PDEs, OTS + NIDC can be used to design finite difference
+schemes with higher than expected convergence rates. Examples include:
+<ul>
+  <li>
+    linear and semilinear time-dependent PDEs and
+  </li>
+  <li>
+    time-dependent PDEs on irregular spatial domains.
+  </li>
+</ul>
+</p>
+
+<h3>PDEs in One Space Dimension</h3>
+
+<h4>Low-Order PDE: The Viscous Burgers Equation</h4>
 
 <p>
 The figures below show finite-difference solutions to the 1D viscous Burgers equation
@@ -32,7 +51,7 @@ and simple forward Euler time stepping with (left) and without (right) optimal t
 step selection and non-iterative defect correction.
 </p>
 
-<div class="row">
+<div class="row pt-1 pb-4">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/1d-viscous-burgers-eqn-FE_OTS_soln.png" />
@@ -45,10 +64,15 @@ step selection and non-iterative defect correction.
 
 <p>
 Numerical convergence studies demonstrate the expected convergence rates (left) and
-relationships between computation time and \(L^\infty\) error in the solution.
+relationships between computation time and $L^\infty$ error in the solution. Observe
+that OTS + NIDC leads to <i>effective</i> fourth-order accuracy in $\Delta x$ even though
+the finite difference scheme is formally only second-order accurate in $\Delta x$. The
+time step size $\Delta t$ does not affect the accuracy because the stability constraint
+requires that $\Delta t = O(\Delta x^2)$.
+
 </p>
 
-<div class="row">
+<div class="row pt-1 pb-4">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/1d-viscous-burgers-eqn-error_vs_N.png" />
@@ -59,10 +83,13 @@ relationships between computation time and \(L^\infty\) error in the solution.
   <div class="col-1"></div>
 </div>
 
-<h3>1D Fourth-Order Parabolic Equation</h3>
+<h4>High-Order PDE in Space: The Fourth-Order Parabolic Equation</h4>
 
 <p>
-The figures below show finite-difference solutions to the 1D fourth-order parabolic
+OTS + NIDC is not limited to low-order partial differential equations. However, higher
+order stencils are required for fortuitous cancellation of higher-order errors.
+</p>
+The figures below shows finite-difference solutions to the 1D fourth-order parabolic
 equation
 
 $$
@@ -71,20 +98,20 @@ $$
 
 using
 
-<ul>
-  <li>
+<ul class="my-2">
+  <li class="my-1">
     (left) the standard fourth-order central difference approximation for the spatial
     derivative and simple forward Euler time stepping with optimal time step selection
     and non-iterative defect correction and
   </li>
-  <li>
+  <li class="my-1">
     (right) the standard second-order central difference approximation for the spatial
     derivative and Crank-Nicholson time stepping.
   </li>
 </ul>
 </p>
 
-<div class="row">
+<div class="row pt-1 pb-3">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/1d-fourth-order-parabolic-eqn-FE_OTS_soln.png" />
@@ -97,11 +124,11 @@ using
 
 <p>
 Numerical convergence studies demonstrate the expected convergence rates (left) and
-relationships between computation time and \(L^\infty\) error in the solution amongst a
+relationships between computation time and $L^\infty$ error in the solution amongst a
 collection of common finite diffence schemes.
 </p>
 
-<div class="row">
+<div class="row pt-1 pb-3">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/1d-fourth-order-parabolic-eqn-error_vs_N.png" />
@@ -114,21 +141,75 @@ collection of common finite diffence schemes.
 
 <p>
 It is interesting to observe that the schemes based on Crank-Nicholson time stepping
-require less computation than OTS-NIDC. However, round-off error limits the accuracy
+require less computation than OTS + NIDC. However, round-off error limits the accuracy
 achievable by both Crank-Nicholson methods (due to the linear solve required at each time
-step). OTS-NIDC does not suffer from the same accuracy limitation (but suffers from the
-severe \( \Delta t = O(\Delta x^4) \) constraint on the maximum stable time step).
+step). OTS + NIDC does not suffer from the same accuracy limitation (but suffers from the
+stringent stability constraint $\Delta t = O(\Delta x^4)$ constraint).
 </p>
 
-<h3>2D Diffusion Equation</h3>
+<h4>Second-Order PDE in Space and Time: The Wave Equation</h4>
 
 <p>
-The figures below show that optimal time step selection and non-iterative defect correction
-is effective for finite-difference schemes (1) in multiple space dimension and (2) on
-irregularly shaped domains.
+The figure below shows convergence rates of finite-difference solutions (with and without
+OTS + NIDC) to the second-order wave equation
+
+$$
+u_{tt} = c^2 u_{xx} + f(x, t)
+$$
+
+solved using the Kreiss, Petersson, and Ystrom scheme (2002).
 </p>
 
-<div class="row">
+<div class="row pt-1 pb-3">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <img class="w-100" src="figures/1d-wave-eqn-error_vs_N.png" />
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<p>
+OTS + NIDC leads to effective fourth-order accuracy in $\Delta x$ even though the finite
+difference scheme is formally only second-order accurate in $\Delta x$. The time step size
+$\Delta t$ does not affect the accuracy because the stability constraint requires that
+$\Delta t = O(\Delta x)$.
+</p>
+
+<h3>PDEs in Multiple Space Dimensions and Irregular Domains</h3>
+
+<p>
+OTS + NIDC is suitable for PDEs in multiple space dimensions and on irregular domains.
+However, achieving a boost in accuracy typically requires careful choice of the
+
+<ul>
+  <li class="my-2">
+    finite-difference scheme for the spatial derivative and
+  </li>
+  <li class="my-2">
+    high-order accurate interpolation scheme for the boundary conditions.
+  </li>
+</ul>
+
+The figures below show high-order accurate solutions to the 2D diffusion equation
+
+$$
+u_t = D \nabla u + f(x, y, t)
+$$
+
+on irregular domains achieved by using OTS + NIDC with
+
+<ul>
+  <li class="my-2">
+    an <i>isotropic</i> (9pt) second-order central difference approximation for the
+    spatial derivative and
+  </li>
+  <li class="my-2">
+    a 4th-order accurate interpolation to impose boundary conditions.
+  </li>
+</ul>
+</p>
+
+<div class="row my-0 py-0">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/2d-diffusion-eqn-circle.webp" />
@@ -140,33 +221,16 @@ irregularly shaped domains.
 </div>
 
 <p>
-Both figures show solutions to the 2D diffusion equation
-
-$$
-u_t = D \nabla u + f(x, y, t).
-$$
-
-To achieve the boost in accuracy, we need to use
-
-<ul>
-  <li>
-    an <i>isotropic</i> (9pt) second-order central difference approximation for the
-    spatial derivative and
-  </li>
-  <li>
-    a 4th-order accurate interpolation to impose boundary conditions.
-  </li>
-</ul>
-</p>
-
-
-<p>
 Numerical convergence studies demonstrate the expected convergence rates (left) and
-relationships between computation time and \(L^\infty\) error in the solution. The figures
-below are specific to the solution on the starfish-shaped domain.
+relationships between computation time and $L^\infty$ error in the solution. Again, we see
+that OTS + NIDC leads to effective fourth-order accuracy in even though the finite
+difference scheme is formally only second-order accurate in $\Delta x$ and that the time
+step size does not affect the accuracy because the stability constraint requires that
+$\Delta t = O(\Delta x^2)$. The figures below are specific to the solution on the
+starfish-shaped domain.
 </p>
 
-<div class="row">
+<div class="row pt-0 pb-4">
   <div class="col-1"></div>
   <div class="col-5">
     <img class="w-100" src="figures/2d-diffusion-eqn-starfish-error_vs_N.png" />
@@ -176,6 +240,48 @@ below are specific to the solution on the starfish-shaped domain.
   </div>
   <div class="col-1"></div>
 </div>
+
+<h3>Semilinear PDE: The Variable Coefficient Wave Equation</h3>
+
+<p>
+OTS + NIDC can be extended to boost the accuracy of variable coefficient time-dependent
+PDEs by (1) optimally choosing the <i>numerical grid</i> and (2) using divided difference
+stencils that are the natural generalization of standard uniform-grid stencils
+{% cite 2009-Chu_Lambers-ICAEM_WCE %}.
+
+The figures below shows convergence rates of finite-difference solutions to the second-order
+variable-coefficient wave equation (left)
+
+$$
+u_{tt} = c(x)^2 u_{xx} + f(x, t)
+$$
+
+solved using the Kreiss, Petersson, and Ystrom scheme (2002) and the variable-coefficient
+diffusion equation (right)
+
+$$
+u_t = (D(x) u)_{xx} + f(x, t)
+$$
+
+solved using a second-order finite difference scheme based on divided differences.
+
+<div class="row py-2">
+  <div class="col-1"></div>
+  <div class="col-5">
+    <img class="w-100" src="figures/1d-variable-coefficient-wave-eqn-error_vs_N.png" />
+  </div>
+  <div class="col-5">
+    <img class="w-100" src="figures/1d-variable-coefficient-diffusion-eqn-error_vs_N.png" />
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<p>
+In plots for the variable-coefficient diffusion equation, FE is shorthand for forward
+Euler time integration.
+</p>
+
+<hr/>
 
 <h2>MATLAB Code</h2>
 <a name="code"></a>
@@ -211,5 +317,7 @@ below are specific to the solution on the starfish-shaped domain.
   </li>
 </ul>
 
+<hr/>
+
 <h2>References</h2>
-{% bibliography --query @*[key = 2011-Chu-AMC] %}
+{% bibliography --cited %}
