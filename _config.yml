@@ -59,7 +59,7 @@ autoprefixer:
 
 exclude:
 - README.md
-- RELEASE-NOTES.md
+- CHANGE-LOG.md
 - COPYRIGHT
 - VERSION
 - _bin
