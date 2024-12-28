@@ -97,7 +97,7 @@ the citation. If no PDF file is available for a citation, then no link is genera
 
 1. Bump the website version in the `VERSION` file.
 
-2. Update the release notes in the `RELEASE-NOTES.md`.
+2. Update the release notes in the `CHANGE-LOG.md`.
 
 3. Merge changes into the `main` branch on GitHub.
 
