@@ -75,5 +75,5 @@ markdown: kramdown
 scholar:
   style: apa
   bibliography: publications.bib
-  bibliography_template: '{{reference}} {% if links.pdf %}[<a href="{{links.pdf}}">pdf</a>]{% endif %}'
+  bibliography_template: '{{reference}}. {% if links.pdf %}[<a href="{{links.pdf}}">pdf</a>]{% endif %}'
   repository: "/research/publications"
