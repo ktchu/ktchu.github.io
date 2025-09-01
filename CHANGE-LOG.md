@@ -4,6 +4,7 @@ Release Notes
 --------------------------------------------------------------------------------------------
 2025-09-02
 ==========
+* Add "What's New" section to home page.
 * Add education web page.
 * Fix permalinks.
 
