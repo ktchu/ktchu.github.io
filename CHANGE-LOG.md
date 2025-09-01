@@ -2,6 +2,14 @@ Release Notes
 ============================================================================================
 
 --------------------------------------------------------------------------------------------
+2025-09-01
+==========
+* Update publications.
+* Update page and content navigation bar layouts.
+* Update name and link for Xtallography.jl
+* Update ruby gem dependencies to be compatible with ruby 3.4.
+
+--------------------------------------------------------------------------------------------
 2024-12-27
 ==========
 * Update publications.
