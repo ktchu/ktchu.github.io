@@ -1,9 +1,11 @@
 ---
 layout: default
 ---
-<div class="my-0 mx-auto pt-3 pb-1 d-flex d-flex align-items-center justify-content-between">
-  <h1 class="m-0 p-0">{{ page.title }}</h1>
-  <div class="pe-0 pe-sm-2">
+<div class="row my-0 mx-auto pt-3 pb-1 d-flex d-flex">
+  <div class="col-xl m-0 p-0">
+    <h1 class="m-0 p-0">{{ page.title }}</h1>
+  </div>
+  <div class="col-xl-4 mx-0 pe-3 pt-3 pt-xl-1">
     {% if page.content-nav or layout.content-nav %}{% include content-nav.html %}{% endif %}
   </div>
 </div>
