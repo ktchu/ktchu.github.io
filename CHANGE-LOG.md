@@ -6,6 +6,7 @@ Release Notes
 ==========
 * Update publications.
 * Update page and content navigation bar layouts.
+* Update name and link for Xtallography.jl
 * Update ruby gem dependencies to be compatible with ruby 3.4.
 
 --------------------------------------------------------------------------------------------
